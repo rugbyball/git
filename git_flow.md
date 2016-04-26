@@ -20,3 +20,6 @@ git branch
 touch CHANGELOG.md  
 git flow feature finish add_change_log  
 git branch  
+
+### 安裝 git-flow on Windows ###
+https://github.com/nvie/gitflow/wiki/Windows  
