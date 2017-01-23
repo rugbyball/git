@@ -1,9 +1,9 @@
 ##0. account_deals$add(新增帐户交易记录 (外部交易))
 ### arguments
 
-|parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
-|account_id|帐户编号|integer|NULL::integer|IN|
+parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode
+-------|-------|-------|-------
+account_id|帐户编号|integer|NULL::integer|IN
 |payment_id|支付方式编号|integer|NULL::integer|IN|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |account_deal_type|交易类型 (1，存入；2，提现) 提现金额前加负号|integer|NULL::integer|IN|
