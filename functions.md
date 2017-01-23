@@ -1,9 +1,8 @@
 ##0. account_deals$add(新增帐户交易记录 (外部交易))
 ### arguments
-
-parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode
--------|-------|-------|-------
-account_id|帐户编号|integer|NULL::integer|IN
+|parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
+|-------|-------|-------|-------|-------|
+|account_id|帐户编号|integer|NULL::integer|IN|
 |payment_id|支付方式编号|integer|NULL::integer|IN|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |account_deal_type|交易类型 (1，存入；2，提现) 提现金额前加负号|integer|NULL::integer|IN|
@@ -33,7 +32,7 @@ SELECT droi_ecommerce."account_deals$add"(account_id => 1,
 ##1. accounts$add(新增帐户)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |account_type|帐户类型 (1，管理帐户；2，活动帐户；3，一般帐户)。一般帐户只可对本人应用用户充值；管理帐户才可对非本人应用用户充值|integer|3|IN|
 |name|帐户名称|character varying|NULL::character varying|IN|
@@ -57,7 +56,7 @@ SELECT droi_ecommerce."accounts$add"(finance_center_id => 1,
 ##2. account_users$add(新增帐户用户绑定)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id|应用编号|integer|NULL::integer|IN|
 |account_id|帐户编号|integer|NULL::integer|IN|
 |user_id|用户编号|integer|NULL::integer|IN|
@@ -71,7 +70,7 @@ SELECT droi_ecommerce."account_users$add"(app_id => 2,account_id => 5, user_id =
 ##3. apps$add(新增应用)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |transfer_enabled|是否启用转帐|boolean|false|IN|
 |cross_app_transfer_enabled|是否启用跨應用转帐 (TRUE，启用；FALSE，停用) 只可同帐户下用户互转|boolean|false|IN|
@@ -95,7 +94,7 @@ SELECT droi_ecommerce."apps$add"(finance_center_id => 1,
 ##4. categories$add(新增商品分类)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id|应用编号|integer|NULL::integer|IN|
 |name|分类名称|character varying|NULL::character varying|IN|
 |brief|分类简介|character varying|NULL::character varying|IN|
@@ -123,7 +122,7 @@ SELECT droi_ecommerce."categories$add"(app_id => 5,
 ##5. cross_app_user_transfer_maps$add(新增跨应用用户转帐对应)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |from_app_id|来源应用编号|integer|NULL::integer|IN|
 |to_app_id|标的应用编号|integer|NULL::integer|IN|
 
@@ -135,7 +134,7 @@ SELECT droi_ecommerce."cross_app_user_transfer_maps$add"(from_app_id => 2, to_ap
 ##6. currencies$add(新增货币)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |app_id|应用编号|integer|NULL::integer|IN|
 |currency_type|货币类型 (1，结算货币；2，App兑换货币；3，App专属货币)|integer|3|IN|
@@ -157,7 +156,7 @@ SELECT droi_ecommerce."currencies$add"(finance_center_id => 1,
 ##7. exrates$add(新增汇率 (只可新增、修改，不可删除))
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |currency_id|货币编号|integer|NULL::integer|IN|
 |base_currency_id|基础货币编号|integer|NULL::integer|IN|
@@ -177,7 +176,7 @@ SELECT droi_ecommerce."exrates$add"(finance_center_id => 1,
 ##8. finance_centers$add(新增金融中心)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |transfer_enabled|是否启用转帐|boolean|false|IN|
 |name|购物中心名称|character varying|''::character varying|IN|
 |brief|购物中心简介|character varying|NULL::character varying|IN|
@@ -196,7 +195,7 @@ SELECT droi_ecommerce."finance_centers$add"(transfer_enabled => TRUE,
 ##9. payments$add(新增支付方式)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |code|支付代号|character varying|''::character varying|IN|
 |name|支付名称|character varying|''::character varying|IN|
@@ -216,7 +215,7 @@ SELECT droi_ecommerce."payments$add"(finance_center_id => 1,
 ##10. products$add(新增商品)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id|应用编号|integer|NULL::integer|IN|
 |category_id|分类编号|integer|NULL::integer|IN|
 |barcode|商品条码|character varying|NULL::character varying|IN|
@@ -306,7 +305,7 @@ SELECT droi_ecommerce."products$add"(app_id => 5,
 ##11. promotes$add(新增促销)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id|应用编号|integer|NULL::integer|IN|
 |product_id|商品编号|integer|NULL::integer|IN|
 |promote_type|促销类型 (1，赠品；2，现金减免；3，价格折扣)|integer|NULL::integer|IN|
@@ -334,7 +333,7 @@ SELECT droi_ecommerce."promotes$add"(app_id => 5,
 ##12. shipping_types$add(新增配送类型)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id|应用编号|integer|NULL::integer|IN|
 |code|配送代号|character varying|NULL::character varying|IN|
 |name|配送名称|character varying|NULL::character varying|IN|
@@ -368,7 +367,7 @@ SELECT droi_ecommerce."shipping_types$add"(app_id => 5,
 ##13. user_deals$add(新增用户交易记录 (内部交易))
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |user_id|用户编号|integer|NULL::integer|IN|
 |user_deal_type|交易类型 (1，存入；2，提现)|integer|NULL::integer|IN|
 |amount|交易金额|numeric|0.0|IN|
@@ -378,7 +377,7 @@ SELECT droi_ecommerce."shipping_types$add"(app_id => 5,
 ##14. users$add(新增用户)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id|应用编号|integer|NULL::integer|IN|
 |user_type|帐户类型 (1，管理用户；2，活动用户；3，一般用户)|integer|3|IN|
 |user_rank|用户等级|integer|NULL::integer|IN|
@@ -400,7 +399,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##15. account_user_logs$get(查询帐户用户交易记录)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |q_account_user_log_id|帐户用户交易记录编号|integer|NULL::integer|IN|
 |finance_center_id|金融中心编号|integer|None|OUT|
 |account_id|帐户编号|integer|None|OUT|
@@ -420,7 +419,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##16. account_users$get(查询帐户用户绑定)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |q_user_id|用户编号|integer|NULL::integer|IN|
 |q_account_id|帐户编号|integer|NULL::integer|IN|
 |account_user_id|帐户用户绑定编号|integer|None|OUT|
@@ -436,7 +435,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##17. account_users$get(查询帐户用户绑定)
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |q_user_id|用户编号|integer|NULL::integer|IN|
 |q_account_id|帐户编号|integer|NULL::integer|IN|
 |account_user_id|帐户用户绑定编号|integer|None|OUT|
@@ -452,7 +451,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##18. app_currencies$getall()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |q_finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |q_app_id|应用编号|integer|NULL::integer|IN|
 |currency_id|货币编号|integer|None|OUT|
@@ -462,7 +461,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##19. exrates$get(查询汇率 (只可新增、修改，不可删除))
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |q_finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |q_currency_id|货币编号|integer|NULL::integer|IN|
 |q_base_currency_id|基础货币编号|integer|NULL::integer|IN|
@@ -472,7 +471,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##20. finance_center_currencies$get()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |q_finance_center_id|金融中心编号|integer|NULL::integer|IN|
 |currency_id|货币编号|integer|None|OUT|
 |code|货币代号|character varying|None|OUT|
@@ -481,7 +480,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##21. account_deposit()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |account_id||integer|NULL::integer|IN|
 |payment_id||integer|NULL::integer|IN|
 |finance_center_id||integer|NULL::integer|IN|
@@ -496,7 +495,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##22. account_transfer()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |from_account_id||integer|NULL::integer|IN|
 |to_account_id||integer|NULL::integer|IN|
 |finance_center_id||integer|NULL::integer|IN|
@@ -510,7 +509,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##23. account_user_transfer()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id||integer|NULL::integer|IN|
 |from_account_id||integer|NULL::integer|IN|
 |from_amount||numeric|0.0|IN|
@@ -525,7 +524,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##24. cross_app_user_transfers()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id||integer|NULL::integer|IN|
 |from_app_id||integer|NULL::integer|IN|
 |to_app_id||integer|NULL::integer|IN|
@@ -542,38 +541,38 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##25. is_account_transfer_enabled()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id||integer|NULL::integer|IN|
 
 ##26. is_cross_app_user_transfer_enabled()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id||integer|NULL::integer|IN|
 
 ##27. is_currency_enabled()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |currency_id||integer|NULL::integer|IN|
 
 ##28. is_user_transfer_enabled()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |app_id||integer|NULL::integer|IN|
 
 ##29. raise_exception_if_not_true()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |check_boolean||boolean|false|IN|
 |exception_msg||character varying|NULL::character varying|IN|
 
 ##30. user_account_transfer()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |finance_center_id||integer|NULL::integer|IN|
 |from_app_id||integer|NULL::integer|IN|
 |from_app_currency_id||integer|NULL::integer|IN|
@@ -588,7 +587,7 @@ SELECT droi_ecommerce."users$add"(app_id => 2,
 ##31. user_transfer()
 ### arguments
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
-|-------|-------|-------|-------|
+|-------|-------|-------|-------|-------|
 |from_user_id||integer|NULL::integer|IN|
 |to_user_id||integer|NULL::integer|IN|
 |currency_id||integer|NULL::integer|IN|
