@@ -1,5 +1,6 @@
 ##0. account_deals$add(新增帐户交易记录 (外部交易))
 ### arguments
+
 |parameter_name|parameter_name_cn|data_type|parameter_default|parameter_mode|
 |-------|-------|-------|-------|
 |account_id|帐户编号|integer|NULL::integer|IN|
